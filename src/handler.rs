@@ -1,5 +1,5 @@
 use crate::config::{Config, StaticConfig};
-use serenity::model::{guild::Member, id::GuildId, gateway::Ready};
+use serenity::model::{guild::Member, id::GuildId};
 use serenity::prelude::{Context, EventHandler};
 use serenity::utils::Colour;
 use log::{trace, warn};
