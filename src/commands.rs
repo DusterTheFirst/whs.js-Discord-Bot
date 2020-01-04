@@ -156,7 +156,7 @@ fn platform(ctx: &mut Context, msg: &Message, args: Args) -> CommandResult {
                 msg.channel_id.send_message(&ctx, |m| {
                     m.embed(|e| {
                         e.title("Invalid platform")
-                            .description("The valid platforms are: `iOS` and `Android`")
+                            .description("The valid platforms are: `iOS`, `Android`")
                             .color(Colour::DARK_RED)
                     })
                 })?;
@@ -252,7 +252,7 @@ fn beta(ctx: &mut Context, msg: &Message, args: Args) -> CommandResult {
                                             Platform::Android => &config.links.beta.android
                                         }
                                     ))
-                                    .color(Colour::DARK_RED)
+                                    .color(Colour::DARK_GREEN)
                             })
                         })?;
                     }
@@ -265,7 +265,7 @@ fn beta(ctx: &mut Context, msg: &Message, args: Args) -> CommandResult {
                                         config.links.beta.ios,
                                         config.links.beta.android
                                     ))
-                                    .color(Colour::DARK_RED)
+                                    .color(Colour::DARK_GREEN)
                             })
                         })?;
                     }
