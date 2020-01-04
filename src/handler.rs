@@ -2,7 +2,7 @@ use crate::config::{Config, StaticConfig};
 use serenity::model::{guild::Member, id::GuildId, gateway::Ready};
 use serenity::prelude::{Context, EventHandler};
 use serenity::utils::Colour;
-use log::info;
+use log::{trace, warn};
 
 pub struct Handler;
 
@@ -15,7 +15,7 @@ impl EventHandler for Handler {
             return;
         }
 
-        member.user.read().dm(&ctx, |m| {
+        match member.user.read().dm(&ctx, |m| {
             m.embed(|e| {
                 e.title("Welcome!")
                     .description(format!(
@@ -24,6 +24,11 @@ impl EventHandler for Handler {
                     ))
                     .color(Colour::DARK_GREEN)
             })
-        }).unwrap();
+        }) {
+            Ok(_) => trace!("Successfully sent dm to {}", member.user.read().tag()),
+            Err(e) => {
+                warn!("Encountered error when sending dm to {}: {:?}", member.user.read().tag(), e);
+            }
+        }
     }
 }
