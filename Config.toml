@@ -1,0 +1,22 @@
+[bot]
+id = 662342251434737665
+guild = 521150060147245066
+prefix = "!"
+
+[links.beta]
+ios = "https://testflight.apple.com/join/sM9ElvxR"
+android = "https://play.google.com/apps/testing/com.dusterthefirst.whs"
+
+[roles]
+beta = 521150903202349057
+
+[roles.grades]
+freshman = 521164795362410497
+sophomore = 521164793911050242
+junior = 521164792061493251
+senior = 521164790408937502
+graduate = 662670287258648576
+
+[roles.platforms]
+ios = 521150922718576660
+android = 521150924371001355
