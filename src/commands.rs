@@ -95,7 +95,7 @@ fn grade(ctx: &mut Context, msg: &Message, args: Args) -> CommandResult {
             msg.channel_id.send_message(&ctx, |m| {
                 m.embed(|e| {
                     e.title("Your Grade")
-                        .description("You have no grade specified, please specify one using this command and specifying the grade you are in. ex: !grade freshman")
+                        .description(format!("You have no grade specified, please specify one using this command and specifying the grade you are in. ex: `{prefix}grade freshman`", prefix=config.bot.prefix))
                         .color(Colour::GOLD)
                 })
             })?;
@@ -179,7 +179,7 @@ fn platform(ctx: &mut Context, msg: &Message, args: Args) -> CommandResult {
             msg.channel_id.send_message(&ctx, |m| {
                 m.embed(|e| {
                     e.title("Your Platform")
-                        .description("You have no platform specified, please specify one using this command and specifying the platform you are in. ex: !platform ios")
+                        .description(format!("You have no platform specified, please specify one using this command and specifying the platform you are in. ex: `{prefix}platform ios`", prefix=config.bot.prefix))
                         .color(Colour::GOLD)
                 })
             })?;
@@ -217,7 +217,7 @@ fn beta(ctx: &mut Context, msg: &Message, args: Args) -> CommandResult {
             msg.channel_id.send_message(&ctx, |m| {
                 m.embed(|e| {
                     e.title("Beta Status")
-                        .description("You are already a member of the beta program. To leave, use `!beta leave`.")
+                        .description(format!("You are already a member of the beta program. To leave, use `{prefix}beta leave`.", prefix=config.bot.prefix))
                         .color(Colour::DARK_GREEN)
                 })
             })?;
@@ -226,7 +226,7 @@ fn beta(ctx: &mut Context, msg: &Message, args: Args) -> CommandResult {
             msg.channel_id.send_message(&ctx, |m| {
                 m.embed(|e| {
                     e.title("Beta Status")
-                        .description("You are not a member of the beta program. To join, use `!beta join`.")
+                        .description(format!("You are not a member of the beta program. To join, use `{prefix}beta join`.", prefix=config.bot.prefix))
                         .color(Colour::GOLD)
                 })
             })?;
@@ -261,9 +261,10 @@ fn beta(ctx: &mut Context, msg: &Message, args: Args) -> CommandResult {
                             m.embed(|e| {
                                 e.title("You are now in the Beta program")
                                     .description(format!(
-                                        "Welcome to the beta program, You have not specified which platform you are on, please do so using `!platform`.\nTo sign up on android, please use this link: {}\nTo sign up on ios, please use this link: {}",
+                                        "Welcome to the beta program, You have not specified which platform you are on, please do so using `{prefix}platform`.\nTo sign up on android, please use this link: {}\nTo sign up on ios, please use this link: {}",
                                         config.links.beta.ios,
-                                        config.links.beta.android
+                                        config.links.beta.android,
+                                        prefix=config.bot.prefix
                                     ))
                                     .color(Colour::DARK_GREEN)
                             })
