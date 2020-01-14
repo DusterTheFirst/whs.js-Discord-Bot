@@ -8,18 +8,31 @@ mod commands;
 mod config;
 mod error;
 mod grade;
-mod platform;
 mod handler;
+mod platform;
 
 use commands::{GENERAL_GROUP, HELP};
 use config::{Config, StaticConfig};
+use crisp_status_reporter::Reporter;
 use handler::Handler;
 
 fn main() {
     setup_env();
 
+    let vigil_token = env::var("VIGIL_TOKEN").expect("Env var VIGIL_TOKEN missing");
     let discord_token = env::var("DISCORD_TOKEN").expect("Env var DISCORD_TOKEN missing");
+
     let config = Config::load();
+
+    // Build reporter
+    let reporter = Reporter::new(&vigil_token)
+        .service_id(&config.vigil.service_id) // Service ID containing the parent Node for Replica (given by Crisp)
+        .node_id(&config.vigil.node_id) // Node ID containing Replica (given by Crisp)
+        .replica_id("0") // Unique Replica ID for instance (ie. your IP on the LAN)
+        .build();
+
+    // Run reporter (starts reporting)
+    reporter.run().unwrap();
 
     let mut client = Client::new(discord_token, Handler).expect("Failed to create client");
 
