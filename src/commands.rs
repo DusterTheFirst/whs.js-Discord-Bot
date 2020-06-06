@@ -11,13 +11,10 @@ use serenity::prelude::*;
 use serenity::utils::Colour;
 use std::collections::HashSet;
 
-group!({
-    name: "General",
-    options: {
-        description: "General Commands",
-    },
-    commands: [grade, platform, beta],
-});
+#[group]
+#[description = "General Commands"]
+#[commands(grade, platform, beta)]
+struct General;
 
 #[command]
 #[aliases("g")]
@@ -79,7 +76,7 @@ fn grade(ctx: &mut Context, msg: &Message, args: Args) -> CommandResult {
             }
         };
     // If there was no arguments passed, tell the user their grade
-    } else if args.len() == 0 {
+    } else if args.is_empty() {
         // Get the user's grade
         if let Some(grade) = Grade::get(&member.roles, &config.roles.grades) {
             // Tell the user their grades
@@ -163,7 +160,7 @@ fn platform(ctx: &mut Context, msg: &Message, args: Args) -> CommandResult {
             }
         };
     // If there was no arguments passed, tell the user their platform
-    } else if args.len() == 0 {
+    } else if args.is_empty() {
         // Get the user's platform
         if let Some(platform) = Platform::get(&member.roles, &config.roles.platforms) {
             // Tell the user their platform
@@ -206,7 +203,7 @@ fn beta(ctx: &mut Context, msg: &Message, args: Args) -> CommandResult {
     let mut member: Member = config.bot.guild.member(&ctx, msg.author.id)?;
     let beta_role = &config.roles.beta;
 
-    if args.len() == 0 {
+    if args.is_empty() {
         // Get the user's platform
         if member
             .user

@@ -1,12 +1,12 @@
 use crate::config::PlatformsRolesConfig;
+use crate::error::EnumParseError;
 use serenity::model::id::RoleId;
 use std::str::FromStr;
-use crate::error::EnumParseError;
 
 #[derive(Debug)]
 pub enum Platform {
     IOS,
-    Android
+    Android,
 }
 
 impl FromStr for Platform {

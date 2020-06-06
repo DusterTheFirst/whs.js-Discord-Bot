@@ -7,10 +7,13 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-dotenv = "0.15"
-toml = "0.5"
-serde = { version = "1.0", features = ["derive"] }
-log = "0.4"
-pretty_env_logger = "0.3"
-serenity = { version = "0.7", features = ["framework", "standard_framework"] }
-crisp-status-reporter = "1.2"
+dotenv = "0.15.0"
+toml = "0.5.6"
+serde = { version = "1.0.111", features = ["derive"] }
+log = "0.4.8"
+pretty_env_logger = "0.4.0"
+serenity = { version = "0.8.6", features = ["framework", "standard_framework"] }
+
+[[bin]]
+name = "whs_helper_bot"
+path = "src/main.rs"

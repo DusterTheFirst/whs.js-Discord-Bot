@@ -1,7 +1,7 @@
 use crate::config::GradesRolesConfig;
+use crate::error::EnumParseError;
 use serenity::model::id::RoleId;
 use std::str::FromStr;
-use crate::error::EnumParseError;
 
 #[derive(Debug)]
 pub enum Grade {

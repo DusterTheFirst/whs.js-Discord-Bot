@@ -13,7 +13,6 @@ pub struct Config {
     pub bot: BotConfig,
     pub roles: RolesConfig,
     pub links: LinksConfig,
-    pub vigil: VigilConfig,
 }
 
 #[derive(Debug, Deserialize)]
@@ -54,12 +53,6 @@ pub struct LinksConfig {
 pub struct BetaLinksConfig {
     pub ios: String,
     pub android: String,
-}
-
-#[derive(Debug, Deserialize)]
-pub struct VigilConfig {
-    pub service_id: String,
-    pub node_id: String,
 }
 
 impl Config {

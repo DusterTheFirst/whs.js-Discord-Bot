@@ -1,8 +1,8 @@
 use crate::config::{Config, StaticConfig};
+use log::{trace, warn};
 use serenity::model::{guild::Member, id::GuildId};
 use serenity::prelude::{Context, EventHandler};
 use serenity::utils::Colour;
-use log::{trace, warn};
 
 pub struct Handler;
 
